@@ -29,9 +29,20 @@ def remove_task():
 
     task_number = int(input("\nEnter the task number to remove: "))
 
+    # Removes task item at specified index
     todo_list.pop(task_number - 1)
 
     print("\nTask removed successfully!")
+
+def mark_task_complete():
+    view_tasks()
+
+    task_number = int(input("\nEnter the task number to mark as complete: "))
+
+    # Marks the specified task as complete
+    todo_list[task_number - 1]["status"] = "complete"
+
+    print("\nTask status updated successfully!")
 
 
 # Main menu which reappears after an option is completed
@@ -39,8 +50,9 @@ while True:
     print("\nMenu:")
     print("1. Add a task")
     print("2. View tasks")
-    print("3. Remove a task")
-    print("4. Exit")
+    print("3: Mark task as complete")
+    print("4. Remove a task")
+    print("5. Exit")
     option = int(input("Choose a menu option: "))
 
     match option:
@@ -49,8 +61,10 @@ while True:
         case 2:
             view_tasks()
         case 3:
-            remove_task()
+            mark_task_complete()
         case 4:
+            remove_task()
+        case 5:
             print("\nExiting the application. Goodbye!")
             break
         case _:
